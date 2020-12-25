@@ -1,0 +1,99 @@
+name:                xpilot-ai
+version:             0.1.0.0
+github:              "mpdairy/xpilot-ai"
+license:             LicenseRef-AllRightsReserved
+author:              "Matt Parker"
+maintainer:          "mpdairy@gmail.com"
+copyright:           ""
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description:         Please see the readme
+
+dependencies:
+  - base
+  - containers
+  - envy
+  - language-c
+  - lens
+  - monad-extras
+  - mtl
+  - newtype
+  - pretty-simple
+  - protolude
+  - stm
+  - template-haskell
+  - text
+  - transformers
+  - unordered-containers
+
+default-extensions:
+  - BangPatterns
+  - DeriveDataTypeable
+  - DeriveFoldable
+  - DeriveFunctor
+  - DeriveGeneric
+  - DeriveTraversable
+  - DuplicateRecordFields
+  - FlexibleContexts
+  - FlexibleInstances
+  - FunctionalDependencies
+  - GeneralizedNewtypeDeriving
+  - LambdaCase
+  - MultiParamTypeClasses
+  - NoImplicitPrelude
+  - OverloadedStrings
+  - ScopedTypeVariables
+  - StandaloneDeriving
+  - TupleSections
+
+
+library:
+  ghc-options:
+  - -Wall
+  - -Wcompat
+  - -Wincomplete-record-updates
+  - -Wincomplete-uni-patterns
+  - -Wredundant-constraints
+  - -j
+  - -O2
+  extra-libraries: xpilotai # cAI
+  source-dirs:
+    - src
+  exposed-modules:
+  - Xpilot.C.Bindings
+  - Xpilot.C.Helpers
+  
+
+build-tools:
+  - c2hs
+
+include-dirs:
+  - "src"
+  - "res"
+
+tests:
+  xpilot-ai-test:
+    main: Spec.hs
+    source-dirs:
+    - test
+    ghc-options:
+    - -Wall
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    extra-libraries: xpilotai # cAI
+    dependencies:
+    - containers
+    - xpilot-ai
+    - hspec
+    - text
