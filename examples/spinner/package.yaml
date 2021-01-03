@@ -64,7 +64,7 @@ library:
   - -Wredundant-constraints
   - -j
   - -O2
-  extra-libraries: cAI
+  extra-libraries: xpilotai
   source-dirs:
     - src
   

@@ -11,8 +11,9 @@ import Foreign.Marshal.Array
 import Xpilot.C.Bindings
 
 
-start :: [String] -> IO Int
-start args = do
+start :: IO () -> [String] -> IO Int
+start aiCallback args = do
   chars <- traverse newArray args
   arr <- newArray chars
-  startAI' (length args) arr
+  f <- makeCallbackLoopWrapper aiCallback
+  start' f (length args) arr

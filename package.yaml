@@ -66,7 +66,7 @@ library:
   - -Wredundant-constraints
   - -j
   - -O2
-  extra-libraries: xpilotai # cAI
+  extra-libraries: xpilotai
   source-dirs:
     - src
   exposed-modules:
@@ -81,19 +81,19 @@ include-dirs:
   - "src"
   - "res"
 
-tests:
-  xpilot-ai-test:
-    main: Spec.hs
-    source-dirs:
-    - test
-    ghc-options:
-    - -Wall
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
-    extra-libraries: xpilotai # cAI
-    dependencies:
-    - containers
-    - xpilot-ai
-    - hspec
-    - text
+# tests:
+#   xpilot-ai-test:
+#     main: Spec.hs
+#     source-dirs:
+#     - test
+#     ghc-options:
+#     - -Wall
+#     - -threaded
+#     - -rtsopts
+#     - -with-rtsopts=-N
+#     extra-libraries: xpilotai
+#     dependencies:
+#     - containers
+#     - xpilot-ai
+#     - hspec
+#     - text
